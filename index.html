@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeeshan Khan - Master Welder & Fabrication</title>
+    <!-- Icons Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff6b00;
+            --secondary: #ffa800;
+            --bg-dark: #0a0c10;
+            --card-bg: #161a23;
+            --text-light: #ffffff;
+            --text-gray: #a0aec0;
+            --whatsapp: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding-bottom: 40px;
+        }
+
+        /* Fixed Top Header */
+        header {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+            padding: 12px 16px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 1.2rem;
+        }
+
+        .brand-text h2 {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .brand-text span {
+            font-size: 0.6rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* Top Right Corner 3 Lines Menu Button */
+        .top-right-menu-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            color: #000;
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.4);
+        }
+
+        /* Language Popup Modal */
+        .lang-modal {
+            position: fixed;
+            top: 65px;
+            right: 16px;
+            width: 260px;
+            background: #1c222e;
+            border: 2px solid var(--primary);
+            border-radius: 14px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+            display: none;
+            flex-direction: column;
+            z-index: 2000;
+        }
+
+        .lang-modal.active {
+            display: flex;
+        }
+
+        .lang-title {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .close-lang {
+            cursor: pointer;
+            color: var(--text-gray);
+        }
+
+        .lang-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 6px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: left;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* Hero Banner */
+        .hero {
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .hero-card {
+            background: linear-gradient(180deg, #1c222e 0%, #10141d 100%);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 20px;
+            padding: 24px 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        .profile-img-wrap {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px;
+            position: relative;
+        }
+
+        .profile-img-wrap img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 0 15px rgba(255, 168, 0, 0.5);
+        }
+
+        .tag {
+            background: rgba(255, 107, 0, 0.15);
+            color: var(--secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 1.4rem;
+            margin: 12px 0 8px;
+            color: #fff;
+        }
+
+        .hero p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-main {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #000;
+        }
+
+        .btn-wa {
+            background: var(--whatsapp);
+            color: #fff;
+        }
+
+        /* Quick Contact Links */
+        .contacts {
+            padding: 0 16px 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .contact-card i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        .contact-card div {
+            font-size: 0.75rem;
+        }
+
+        .contact-card strong {
+            display: block;
+            font-size: 0.8rem;
+            color: #fff;
+        }
+
+        /* Work Photo Gallery Section */
+        .gallery-section {
+            padding: 20px 16px;
+        }
+
+        .section-heading {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .work-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .work-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+        }
+
+        .work-card-info {
+            padding: 8px 10px;
+        }
+
+        .work-card-info h4 {
+            font-size: 0.8rem;
+            color: #fff;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 0 16px 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .service-box {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .service-box i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .service-box h3 {
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        .service-box p {
+            font-size: 0.7rem;
+            color: var(--text-gray);
+        }
+
+        /* Order Form */
+        .form-section {
+            padding: 16px;
+        }
+
+        .form-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            margin-bottom: 4px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: #0f1218;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 0.85rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--whatsapp);
+            border: none;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            padding: 20px 16px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Fixed Header -->
+    <header>
+        <div class="nav-bar">
+            <div class="brand-logo">
+                <div class="logo-icon"><i class="fa-solid fa-fire-burner"></i></div>
+                <div class="brand-text">
+                    <h2>JEESHAN KHAN</h2>
+                    <span>WELDING WORKS</span>
+                </div>
+            </div>
+
+            <!-- Top Right Corner Menu Button -->
+            <button class="top-right-menu-btn" id="menuToggleBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Multi-Language Dropdown -->
+        <div class="lang-modal" id="langModal">
+            <div class="lang-title">
+                <span data-key="chooseLang">Select Language</span>
+                <i class="fa-solid fa-xmark close-lang" id="closeLang"></i>
+            </div>
+            <button class="lang-btn active" onclick="changeLang('en')">English</button>
+            <button class="lang-btn" onclick="changeLang('hi')">हिन्दी (Hindi)</button>
+            <button class="lang-btn" onclick="changeLang('hinglish')">Hinglish</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-card">
+            <div class="profile-img-wrap">
+                <!-- Welder Photo (Photo badalne ke liye 'src' me apni image file ya link dalein) -->
+                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=400&q=80" alt="Jeeshan Khan">
+            </div>
+            <span class="tag" data-key="tag">EXPERT WELDER</span>
+            <h1 data-key="title">Custom Metal & Iron Fabrication</h1>
+            <p data-key="desc">High quality Gates, Windows, Grills & Roof Structures in Kasganj.</p>
+            <div class="btn-group">
+                <a href="#orderForm" class="btn btn-main" data-key="btnOrder"><i class="fa-solid fa-paper-plane"></i> Order Now</a>
+                <a href="https://wa.me/916350138164" class="btn btn-wa" target="_blank"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Call Section -->
+    <section class="contacts">
+        <a href="tel:6350138164" class="contact-card">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+                <span data-key="call1">Call Main</span>
+                <strong>6350138164</strong>
+            </div>
+        </a>
+        <a href="tel:9318420345" class="contact-card">
+            <i class="fa-solid fa-phone-flip"></i>
+            <div>
+                <span data-key="call2">Call Other</span>
+                <strong>9318420345</strong>
+            </div>
+        </a>
+    </section>
+
+    <!-- Work Photo Gallery (Aap apni photo yahan add kar sakte hain) -->
+    <section class="gallery-section">
+        <h2 class="section-heading"><i class="fa-solid fa-images"></i> <span data-key="recentWork">Our Completed Works</span></h2>
+        <div class="gallery-grid">
+            <!-- Work Item 1 -->
+            <div class="work-card">
+                <img src="https://images.unsplash.com/photo-1517646287270-a5a9ca602e5c?auto=format&fit=crop&w=300&q=80" alt="Iron Gate">
+                <div class="work-card-info">
+                    <h4 data-key="w1">Designer Iron Gate</h4>
+                </div>
+            </div>
+            <!-- Work Item 2 -->
+            <div class="work-card">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=300&q=80" alt="Window Grill">
+                <div class="work-card-info">
+                    <h4 data-key="w2">Safety Window Grill</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <h2 class="section-heading"><i class="fa-solid fa-wrench"></i> <span data-key="servicesTitle">Services</span></h2>
+        <div class="services-grid">
+            <div class="service-box">
+                <i class="fa-solid fa-door-closed"></i>
+                <h3 data-key="s1">Iron Gates</h3>
+                <p data-key="s1d">Sliding & Main Gates</p>
+            </div>
+            <div class="service-box">
+                <i class="fa-solid fa-border-all"></i>
+                <h3 data-key="s2">Window Grills</h3>
+                <p data-key="s2d">Custom Safety Grills</p>
+            </div>
+            <div class="service-box">
+                <i class="fa-solid fa-stairs"></i>
+                <h3 data-key="s3">Railings</h3>
+                <p data-key="s3d">Balcony Railings</p>
+            </div>
+            <div class="service-box">
+                <i class="fa-solid fa-warehouse"></i>
+                <h3 data-key="s4">Shed Work</h3>
+                <p data-key="s4d">Tin Roof Framing</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="form-section" id="orderForm">
+        <div class="form-box">
+            <h2 class="section-heading" data-key="formHeading">Send Your Requirement</h2>
+            <form id="inquiryForm">
+                <div class="form-group">
+                    <label data-key="lbl1">Your Name</label>
+                    <input type="text" id="custName" required placeholder="Enter name">
+                </div>
+                <div class="form-group">
+                    <label data-key="lbl2">Mobile Number</label>
+                    <input type="tel" id="custPhone" required placeholder="Enter mobile number">
+                </div>
+                <div class="form-group">
+                    <label data-key="lbl3">What do you want to build?</label>
+                    <select id="custWork">
+                        <option value="Iron Gate">Iron Gate</option>
+                        <option value="Window Grill">Window Frame / Grill</option>
+                        <option value="Balcony Railing">Balcony Railing</option>
+                        <option value="Roof Shed">Roof Tin Shed</option>
+                        <option value="Repair Work">Repairing Work</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-key="lbl4">Size / Details</label>
+                    <textarea id="custDetails" rows="2" placeholder="Write size or details..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn"><i class="fa-brands fa-whatsapp"></i> <span data-key="btnSubmit">Send on WhatsApp</span></button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Address:</strong> Rara, Sahawar, Kasganj - 207242</p>
+        <p>&copy; 2026 Jeeshan Khan Welding Works</p>
+    </footer>
+
+    <!-- Embedded JavaScript -->
+    <script>
+        // Language Database
+        const langData = {
+            en: {
+                chooseLang: "Select Language",
+                tag: "EXPERT WELDER",
+                title: "Custom Metal & Iron Fabrication",
+                desc: "High quality Gates, Windows, Grills & Roof Structures in Kasganj.",
+                btnOrder: "Order Now",
+                call1: "Call Main",
+                call2: "Call Other",
+                recentWork: "Our Completed Works",
+                w1: "Designer Iron Gate",
+                w2: "Safety Window Grill",
+                servicesTitle: "Our Services",
+                s1: "Iron Gates", s1d: "Sliding & Main Gates",
+                s2: "Window Grills", s2d: "Custom Safety Grills",
+                s3: "Railings", s3d: "Balcony Railings",
+                s4: "Shed Work", s4d: "Tin Roof Framing",
+                formHeading: "Send Your Requirement",
+                lbl1: "Your Name", lbl2: "Mobile Number",
+                lbl3: "What do you want to build?", lbl4: "Size / Details",
+                btnSubmit: "Send on WhatsApp"
+            },
+            hi: {
+                chooseLang: "भाषा चुनें",
+                tag: "मास्टर वेल्डर",
+                title: "मजबूत लोहे का फैब्रिकेशन काम",
+                desc: "कासगंज में लोहे के गेट, खिड़की ग्रिल, बालकनी रेलिंग और शेड बनवाएं।",
+                btnOrder: "ऑर्डर करें",
+                call1: "मुख्य नंबर",
+                call2: "अन्य नंबर",
+                recentWork: "हमारे द्वारा किए गए काम",
+                w1: "फैंसी लोहे का गेट",
+                w2: "सुरक्षित खिड़की ग्रिल",
+                servicesTitle: "हमारी सेवाएं",
+                s1: "लोहे के गेट", s1d: "मेन गेट और स्लाइडिंग गेट",
+                s2: "विंडो ग्रिल", s2d: "सुरक्षित फैंसी ग्रिल",
+                s3: "रेलिंग", s3d: "बालकनी सुरक्षा रेलिंग",
+                s4: "शेड वर्क", s4d: "छत का टीन शेड",
+                formHeading: "अपनी आवश्यकता भेजें",
+                lbl1: "आपका नाम", lbl2: "मोबाइल नंबर",
+                lbl3: "क्या बनवाना चाहते हैं?", lbl4: "साइज या विवरण",
+                btnSubmit: "व्हाट्सएप पर भेजें"
+            },
+            hinglish: {
+                chooseLang: "Language Select Karein",
+                tag: "EXPERT WELDER",
+                title: "Mazboot Iron Fabrication Work",
+                desc: "Iron Gates, Window Grills, Railings aur Roof Sheds banwayein.",
+                btnOrder: "Order Karein",
+                call1: "Main Call",
+                call2: "Other Call",
+                recentWork: "Hamare Completed Works",
+                w1: "Designer Iron Gate",
+                w2: "Safety Window Grill",
+                servicesTitle: "Services",
+                s1: "Iron Gates", s1d: "Sliding & Main Gates",
+                s2: "Window Grills", s2d: "Custom Safety Grills",
+                s3: "Railings", s3d: "Balcony Railings",
+                s4: "Shed Work", s4d: "Tin Roof Framing",
+                formHeading: "Requirement Bhejein",
+                lbl1: "Aapka Naam", lbl2: "Mobile Number",
+                lbl3: "Kya banwana hai?", lbl4: "Size / Details",
+                btnSubmit: "WhatsApp Par Bhejein"
+            }
+        };
+
+        // Modal Menu Toggle
+        const menuBtn = document.getElementById('menuToggleBtn');
+        const langModal = document.getElementById('langModal');
+        const closeLang = document.getElementById('closeLang');
+
+        menuBtn.addEventListener('click', () => {
+            langModal.classList.toggle('active');
+        });
+
+        closeLang.addEventListener('click', () => {
+            langModal.classList.remove('active');
+        });
+
+        // Change Language Function
+        function changeLang(lang) {
+            const data = langData[lang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (data[key]) {
+                    el.textContent = data[key];
+                }
+            });
+            langModal.classList.remove('active');
+        }
+
+        // Send Details to WhatsApp
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const work = document.getElementById('custWork').value;
+            const details = document.getElementById('custDetails').value;
+
+            const text = `Hello Jeeshan Khan Welding Works,%0A%0A` +
+                         `*Name:* ${encodeURIComponent(name)}%0A` +
+                         `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                         `*Work:* ${encodeURIComponent(work)}%0A` +
+                         `*Details:* ${encodeURIComponent(details || 'N/A')}`;
+
+            window.open(`https://wa.me/916350138164?text=${text}`, '_blank');
+        });
+    </script>
+</body>
+</html>
